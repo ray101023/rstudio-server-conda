@@ -36,7 +36,7 @@ singularity exec \
 	--bind ${CONDA_PREFIX}:${CONDA_PREFIX} \
 	--bind $HOME/.config/rstudio:/home/rstudio/.config/rstudio \
         `# add additional bind mount required for your use-case` \
-	--bind /data:/data \
+	`# --bind /data:/data \ #this code will not use because the original file doesn't exist
 	--env CONDA_PREFIX=$CONDA_PREFIX \
 	--env RSTUDIO_WHICH_R=$R_BIN \
 	--env RETICULATE_PYTHON=$PY_BIN \
