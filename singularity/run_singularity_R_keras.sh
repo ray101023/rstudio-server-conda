@@ -35,6 +35,9 @@ if [ -z "$CONDA_PREFIX" ]; then
   exit 1
 fi
 
+#--bind ${CONDA_PREFIX}/lib:/usr/local/cuda \ #######where the nvvm & libdevice
+#--bind /usr/lib/x86_64-linux-gnu:/.singularity.d/libs \ ##########where the libcuda.so.1
+
 echo "Starting rstudio service on port $PORT ..."
 singularity exec \
 	--bind $RSTUDIO_TMP/run:/run \
@@ -46,6 +49,7 @@ singularity exec \
 	--bind ${CONDA_PREFIX}:${CONDA_PREFIX} \
 	--bind $HOME/.config/rstudio:/home/rstudio/.config/rstudio \
 	--bind ${CONDA_PREFIX}/lib:/usr/local/cuda \
+        --bind /usr/lib/x86_64-linux-gnu:/.singularity.d/libs \
 	--env CONDA_PREFIX=$CONDA_PREFIX \
 	--env RSTUDIO_WHICH_R=$R_BIN \
 	--env RETICULATE_PYTHON=$PY_BIN \
