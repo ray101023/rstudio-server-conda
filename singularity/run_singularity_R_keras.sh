@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # See also https://www.rocker-project.org/use/singularity/
-
+#
 # Main parameters for the script with default values
 PORT=${PORT:-8789}
 USER=$(whoami)
